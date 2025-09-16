@@ -128,5 +128,6 @@ Apache License 2.0
 ## Support
 
 For issues or questions:
-- Open an issue on GitHub: https://github.com/Matt0x90/FocusGate/issues
+- Open an issue: https://github.com/Matt0x90/FocusGate/issues
+- Post a question: https://github.com/Matt0x90/FocusGate/discussions
 - Contact me by email. admin@zaelious.com
