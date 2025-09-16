@@ -30,11 +30,9 @@ async function loadLocale(lang) {
     if (res.ok) {
       i18nMessages = await res.json();
     } else {
-      console.warn('Locale file not found for', lang);
       i18nMessages = null;
     }
   } catch (err) {
-    console.error('Failed to load locale', err);
     i18nMessages = null;
   }
 }
@@ -177,7 +175,6 @@ function normalizeDomain(text) {
     
     // Validate the extracted domain
     if (!isValidDomain(domain)) {
-      console.warn('Invalid domain format:', domain);
       return "";
     }
     
@@ -192,7 +189,6 @@ function normalizeDomain(text) {
     
     // Validate the cleaned domain
     if (!isValidDomain(cleaned)) {
-      console.warn('Invalid domain format:', cleaned);
       return "";
     }
     
@@ -394,7 +390,7 @@ addForm.addEventListener("submit", async (e) => {
   try {
     granted = await requestOriginPermission(d);
   } catch (err) {
-    console.error('Permission request failed:', err);
+    // Permission request failed silently
   }
   
   if (!granted) {

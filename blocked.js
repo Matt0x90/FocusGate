@@ -162,7 +162,7 @@ async function initBlocked() {
     const lang = prefs.lang || 'en';
     await loadLocaleBlocked(lang);
   } catch (err) {
-    console.error('Failed to load preferences:', err);
+    // Continue with defaults if preferences fail to load
   }
   
   // Apply translations
@@ -209,7 +209,7 @@ document.querySelectorAll("button[data-min]").forEach(btn => {
         minutes: minutes
       });
     } catch (err) {
-      console.error('Failed to snooze domain:', err);
+      // Failed to snooze, re-enable button
       btn.disabled = false;
       return;
     }

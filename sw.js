@@ -383,7 +383,6 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           return sendResponse({ ok: false, error: "Unknown command" });
       }
     } catch (error) {
-      console.error('Message handler error:', error);
       return sendResponse({ ok: false, error: error.message });
     }
   })();
@@ -413,7 +412,6 @@ chrome.storage.onChanged.addListener(async (changes, area) => {
     const newArr = Array.isArray(changes.blockedDomains.newValue) ? changes.blockedDomains.newValue : [];
     const added = newArr.filter(d => !oldArr.includes(d));
     
-    // Give 15 second grace period for permission grant
     const until = Date.now() + 15000;
     for (const d of added) { 
       try { 
