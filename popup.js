@@ -394,12 +394,15 @@ addForm.addEventListener("submit", async (e) => {
   }
   
   if (!granted) {
-    // User denied permission - restore original list
+    // User denied permission - clear pending FIRST, then restore list
+    await chrome.runtime.sendMessage({ cmd: "markGranted", domain: d });
     await setBlocked(original);
+    // Force immediate render to ensure UI updates
+    await render();
+  } else {
+    // Permission granted - clear pending status
+    await chrome.runtime.sendMessage({ cmd: "markGranted", domain: d });
   }
-  
-  // Clear pending status
-  await chrome.runtime.sendMessage({ cmd: "markGranted", domain: d });
   
   // Clear input and refocus
   domainInput.value = "";

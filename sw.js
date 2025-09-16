@@ -374,6 +374,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         case "markGranted": 
           if (msg.domain) {
             await setPendingGrant(msg.domain, 0); 
+            // Immediately sync to reconcile permissions
             await syncRules(); 
             return sendResponse({ ok: true });
           }
@@ -407,19 +408,8 @@ function scheduleSync(ms = 120) {
 
 chrome.storage.onChanged.addListener(async (changes, area) => {
   if (area === "sync" && changes.blockedDomains) {
-    // Mark newly added domains as pending to avoid race conditions
-    const oldArr = Array.isArray(changes.blockedDomains.oldValue) ? changes.blockedDomains.oldValue : [];
-    const newArr = Array.isArray(changes.blockedDomains.newValue) ? changes.blockedDomains.newValue : [];
-    const added = newArr.filter(d => !oldArr.includes(d));
-    
-    const until = Date.now() + 15000;
-    for (const d of added) { 
-      try { 
-        await setPendingGrant(d, until); 
-      } catch {
-        // Continue even if one domain fails
-      }
-    }
+    // Don't automatically mark domains as pending here - let the popup handle it
+    // This prevents the bug where denied domains get re-marked as pending
     scheduleSync();
   }
   
