@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>FocusGate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title-group">
+        <h1 id="app-title">FocusGate</h1>
+        <p id="tagline">Block distractions. Snooze when needed.</p>
+      </div>
+      <div class="controls">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode"></button>
+        <select id="language-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="hi">HI</option>
+          <option value="zh_CN">中文</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <form id="add-form" aria-labelledby="add-label">
+        <label id="add-label" for="domain-input">Add a Domain</label>
+        <div class="row">
+          <input id="domain-input" type="text" inputmode="url" autocomplete="off"
+                 placeholder="twitter.com or https://x.com/..." aria-required="true" />
+          <button id="add-btn" class="primary" type="submit">Add</button>
+        </div>
+        <!-- Give the small text an id so localisation can update it -->
+        <small id="per-site-info" class="muted">Per-site permission requested on add; no global access.</small>
+      </form>
+
+      <section aria-labelledby="snooze-title" class="snooze">
+        <h2 id="snooze-title">Global Snooze</h2>
+        <div class="row">
+          <button class="ghost preset" data-min="15">15m</button>
+          <button class="ghost preset" data-min="60">1h</button>
+          <button class="ghost preset" data-min="720">12h</button>
+          <button class="ghost" id="resume-btn">Resume</button>
+        </div>
+        <div id="status" class="muted" aria-live="polite"></div>
+      </section>
+
+      <section aria-labelledby="list-title">
+        <h2 id="list-title">Blocked Domains</h2>
+        <ul id="list" role="listbox" aria-describedby="list-help"></ul>
+        <small id="list-help" class="muted">Tab to a domain and press Delete to remove. ⏱ snoozes; ▶ resumes.</small>
+      </section>
+
+      <section aria-labelledby="ie-title" class="import-export">
+        <h2 id="ie-title">Import / Export</h2>
+        <div class="row">
+          <button id="export-btn" class="ghost">Export</button>
+          <input id="import-file" type="file" accept="application/json" hidden />
+          <button id="import-btn" class="ghost">Import</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

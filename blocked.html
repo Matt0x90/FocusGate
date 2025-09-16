@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blocked by FocusGate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="blocked.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card" role="dialog" aria-labelledby="t" aria-describedby="d">
+        <h1 id="t">Blocked by FocusGate</h1>
+        <p id="d">This site is on your break list. Snooze briefly if you really need access.</p>
+
+        <div id="hostline" class="hostline" aria-live="polite"></div>
+
+        <div class="row">
+          <button class="ghost" data-min="5" aria-label="Snooze this site for 5 minutes">Snooze 5m</button>
+          <button class="ghost" data-min="15" aria-label="Snooze this site for 15 minutes">Snooze 15m</button>
+          <button class="ghost" id="open-popup" aria-label="Open FocusGate">Open FocusGate</button>
+        </div>
+
+        <small class="muted">Privacy: no analytics, no content scripts, no remote servers.</small>
+      </section>
+    </main>
+    <script src="blocked.js"></script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+:root {
+  --bg: #f8fafc;
+  --fg: #111827;
+  --muted: #6b7280;
+  --ghost: #f3f4f6;
+  --ring: #93c5fd;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.wrap { min-height: 100%; display: grid; place-items: center; padding: 24px; }
+
+.card {
+  background: #fff;
+  width: min(560px, 92vw);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+h1 { margin: 0 0 8px; font-size: 22px; }
+.muted { color: var(--muted); }
+
+.hostline { margin: 8px 0 14px; font-weight: 600; }
+
+.row { display: flex; gap: 10px; }
+button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ghost);
+  cursor: pointer;
+  /* Ensure button text contrasts in dark mode */
+  color: var(--fg);
+}
+button:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; border-radius: 10px; }
+
+/* Dark mode via prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f2937;
+    --fg: #f9fafb;
+    --muted: #9ca3af;
+    --ghost: #374151;
+    --ring: #60a5fa;
+  }
+  .card {
+    background: #111827;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.5);
+  }
+}
+
+/* Manual dark/light overrides */
+html.dark {
+  --bg: #1f2937;
+  --fg: #f9fafb;
+  --muted: #9ca3af;
+  --ghost: #374151;
+  --ring: #60a5fa;
+}
+html.dark .card {
+  background: #111827;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.5);
+}
+html.light {
+  --bg: #f8fafc;
+  --fg: #111827;
+  --muted: #6b7280;
+  --ghost: #f3f4f6;
+  --ring: #93c5fd;
+}
+html.light .card {
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
