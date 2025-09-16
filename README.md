@@ -71,7 +71,7 @@ To delete all FocusGate data:
 ### Contact
 
 For privacy concerns or questions about FocusGate:
-- Open an issue on GitHub
+- Open an issue on GitHub: https://github.com/Matt0x90/FocusGate/issues
 - Email: admin@zaelious.com
 
 ### Changes to This Policy
