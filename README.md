@@ -2,6 +2,8 @@
 
 FocusGate is a privacy-first Chrome extension that helps you stay focused by blocking distracting websites. It stores your blocklist locally, uses Chrome's minimal **Declarative Net Request** API to redirect visits, and requests site permissions only on demand when you add a domain. You can snooze the blocklist temporarily when you really need access.
 
+<img width="256" height="453" alt="image" src="https://github.com/user-attachments/assets/37aba2d3-cb6e-435c-b643-07ab71167c71" />
+
 ## Features
 
 - **Add/Remove Domains** - Block distracting sites by hostname. Type a domain (e.g. `twitter.com` or full URL) and click **Add**. Remove with the "Remove" button or `Delete` key.
